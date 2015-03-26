@@ -22,11 +22,11 @@ def Main():
 			else:
 				print i.attrib['mchDesc'] +'\n'+ state.attrib['status']+'\n\n'
 
-	print "Live matches:"+str(len(livematches))
-	for x,i in enumerate(livematches):
-		print "\t"+str(x+1)+"."+i
-	print
 	if len(livematches)>0:
+		print "Live matches:"+str(len(livematches))
+		for x,i in enumerate(livematches):
+			print "\t"+str(x+1)+"."+i
+		print
 		myteam = int(raw_input("Select match:"))
 		while 1:
 			# handle = open('livematches.xml').read()
