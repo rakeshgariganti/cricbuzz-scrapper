@@ -17,7 +17,7 @@ def Main():
 	for i in root:
 		if i.tag == "match":
 			state = i.find('state')
-			if state.attrib['mchState'] == "onprogress":
+			if state.attrib['mchState'] == "inprogress":
 				if 'IND' in i.attrib['mchDesc']:
 					livematches.append(i.attrib['mchDesc'])
 			else:
@@ -40,7 +40,7 @@ def Main():
 			for i in root.iter('match'):
 				state = i.find('state')
 				if livematches[myteam-1] == i.attrib['mchDesc']:
-					if state.attrib['mchState']=="onprogress":
+					if state.attrib['mchState']=="inprogress":
 						ee = i.find('mscr')
 						inningsDetail = ee.find('inngsdetail')
 						overs = inningsDetail.attrib['noofovers']
@@ -63,6 +63,7 @@ def Main():
 						wkts = inngs.attrib['wkts']
 						print str(team)+'\t'+str(score) +"-"+ str(wkts) + "\t" + str(overs)
 						print "\nCRR: "+str(crr) +"\tPartnership: "+str(cprtshp)
+						print state.attrib['status']
 					else:
 						print '\033[91m'+ str(i.attrib['mchDesc']) + '\033[0m'
 						print '\033[94m'+ state.attrib['status'] + '\033[0m'
