@@ -18,8 +18,7 @@ def Main():
 		if i.tag == "match":
 			state = i.find('state')
 			if state.attrib['mchState'] == "inprogress":
-				if 'IND' in i.attrib['mchDesc']:
-					livematches.append(i.attrib['mchDesc'])
+				livematches.append(i.attrib['mchDesc'])
 			else:
 				print i.attrib['mchDesc'] +'\n'+ state.attrib['status']+'\n\n'
 
@@ -33,7 +32,7 @@ def Main():
 			# handle = open('livematches.xml').read()
 			try: 
 				handle = requests.get(URL).content
-			except:
+			except :
 				print 'Something wrong with your Internet connection'
 				exit(1)
 			root = ET.fromstring(handle)
@@ -63,7 +62,7 @@ def Main():
 						wkts = inngs.attrib['wkts']
 						print str(team)+'\t'+str(score) +"-"+ str(wkts) + "\t" + str(overs)
 						print "\nCRR: "+str(crr) +"\tPartnership: "+str(cprtshp)
-						print state.attrib['status']
+						print state.attrib['status'] +'\n'
 					else:
 						print '\033[91m'+ str(i.attrib['mchDesc']) + '\033[0m'
 						print '\033[94m'+ state.attrib['status'] + '\033[0m'
@@ -72,7 +71,7 @@ def Main():
 					# print "asdf"
 					pass
 			print
-			time.sleep(10)
+			time.sleep(20)
 	else:
 		print "No live matches.."
 
